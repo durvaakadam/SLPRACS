@@ -35,6 +35,7 @@ def decrypt_vigenere(ciphertext, key):
 
     return "".join(decryptedtext)
 
+
 ciphertext = input("Enter the ciphertext: ").upper()
 key = input("Enter the key: ").upper()
 decrypted_text = decrypt_vigenere(ciphertext, key)
