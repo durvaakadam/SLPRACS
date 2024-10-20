@@ -65,7 +65,7 @@ def playfair_decrypt(text, key):
     return ''.join(decrypt_digraph(key_square, digraph) for digraph in digraphs)
 
 def main():
-    keyword = input("Enter the keyword forKBKYKYIQPW the Playfair cipher: ").strip()
+    keyword = input("Enter the keyword for the Playfair cipher: ").strip()
     ciphertext = input("Enter the ciphertext to decrypt: ").strip()
     
     decrypted_text = playfair_decrypt(ciphertext, keyword)
