@@ -16,27 +16,32 @@ def print_keystream(key):
     print(f"Keystream: {keystream}")
 
 def encrypt_vigenere(plaintext, key):
-    plaintext = ''.join(plaintext.split())  # Remove spaces
     ciphertext = []
     generated_key = generate_key(plaintext, key)
 
     print(f"Generated Key: {generated_key}")  # Print the repeating key
     print_keystream(generated_key)  # Print the keystream
 
+    key_index = 0  # Initialize key index for mapping to key
     for i in range(len(plaintext)):
         char = plaintext[i]
-        key_char = generated_key[i]
-
-        if char.isupper():
-            cipher_shift = (ord(char) - ord('A') + ord(key_char) - ord('A')) % 26
-            ciphertext.append(chr(cipher_shift + ord('A')))
+        
+        if char.isalpha():  # Only process alphabetic characters
+            key_char = generated_key[key_index]
+            if char.isupper():
+                cipher_shift = (ord(char) - ord('A') + ord(key_char) - ord('A')) % 26
+                ciphertext.append(chr(cipher_shift + ord('A')))
+            else:
+                cipher_shift = (ord(char) - ord('a') + ord(key_char) - ord('A')) % 26
+                ciphertext.append(chr(cipher_shift + ord('a')))
+            key_index += 1  # Increment key index only for alphabetic characters
         else:
-            cipher_shift = (ord(char) - ord('a') + ord(key_char) - ord('A')) % 26
-            ciphertext.append(chr(cipher_shift + ord('a')))
+            ciphertext.append(char)  # Preserve non-alphabet characters (like spaces)
 
     return "".join(ciphertext)
 
-plaintext = input("Enter the plaintext: ").upper()
+# Input from the user
+plaintext = input("Enter the plaintext: ")
 key = input("Enter the key: ").upper()
 ciphertext = encrypt_vigenere(plaintext, key)
 print(f"Ciphertext: {ciphertext}")
