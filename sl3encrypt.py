@@ -39,7 +39,7 @@ def encrypt_vigenere(plaintext, key):
             ciphertext.append(char) 
 
     return "".join(ciphertext)
-
+#ok
 plaintext = input("Enter the plaintext: ")
 key = input("Enter the key: ").upper()
 ciphertext = encrypt_vigenere(plaintext, key)
