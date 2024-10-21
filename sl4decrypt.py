@@ -21,7 +21,7 @@ def rsa_key_generation(p, q, e):
     d = modular_inverse(e, phi)
     return n, d
 
-# Inputs
+
 p = int(input("Enter prime number p: "))
 q = int(input("Enter prime number q: "))
 e = int(input("Enter the public key e: "))
