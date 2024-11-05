@@ -1,42 +1,33 @@
-def generate_key(ciphertext, key):
-    key_list = []
-    key_index = 0
+def vigenere_decrypt(ciphertext, keyword):
+    def shift_char(char, shift):
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            return chr((ord(char) - base - shift) % 26 + base)
+        return char
+
+    def char_to_number(char):
+        return ord(char.upper()) - ord('A')
+
+    keyword = keyword.upper()
+    ciphertext = ciphertext.upper()
+    decrypted_text = []
+    keyword_length = len(keyword)
+    keyword_index = 0
 
     for char in ciphertext:
         if char.isalpha():
-            key_list.append(key[key_index % len(key)].upper())
-            key_index += 1
+            shift = char_to_number(keyword[keyword_index % keyword_length])
+            decrypted_text.append(shift_char(char, shift))
+            keyword_index += 1
         else:
-            key_list.append(char)  # Preserve non-alphabet characters
+            decrypted_text.append(char)
 
-    return "".join(key_list)
+    return ''.join(decrypted_text)
 
-def print_keystream(key):
-    keystream = [ord(char) - ord('A') for char in key if char.isalpha()]
-    print(f"Keystream: {keystream}")
+if __name__ == "__main__":
+    ciphertext = input("Enter your Encrypted Text: ")
+    keyword = input("Enter your key: ")
 
-def decrypt_vigenere(ciphertext, key):
-    decryptedtext = []
-    generated_key = generate_key(ciphertext, key)
-
-    print(f"Generated Key: {generated_key}")  
-    print_keystream(generated_key)  
-
-    for i in range(len(ciphertext)):
-        char = ciphertext[i]
-        key_char = generated_key[i]
-
-        if char.isupper():
-            plain_shift = (ord(char) - ord('A') - (ord(key_char) - ord('A')) + 26) % 26
-            decryptedtext.append(chr(plain_shift + ord('A')))
-        else:
-            plain_shift = (ord(char) - ord('a') - (ord(key_char) - ord('A')) + 26) % 26
-            decryptedtext.append(chr(plain_shift + ord('a')))
-
-    return "".join(decryptedtext)
-
-
-ciphertext = input("Enter the ciphertext: ").upper()
-key = input("Enter the key: ").upper()
-decrypted_text = decrypt_vigenere(ciphertext, key)
-print(f"Decrypted Text: {decrypted_text}")
+    # Decryption
+    decrypted = vigenere_decrypt(ciphertext, keyword)
+    print("Decrypted:", decrypted)
