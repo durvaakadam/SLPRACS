@@ -1,4 +1,3 @@
-
 def encrypt(text, shift):
     encrypted_text = "" 
     for char in text:  
@@ -26,3 +25,5 @@ def main():
  
 if __name__ == "__main__":  
     main()  
+
+#CORRECT

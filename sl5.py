@@ -35,12 +35,10 @@ if __name__ == "__main__":
 
     n = compute_n(p, q)
     phi_n = compute_phi_n(p, q)
-
     d = mod_inverse(e, phi_n)
 
     print(f"Public Key (e, n): ({e}, {n})")
     print(f"Private Key (d, n): ({d}, {n})")
-
 
     M = int(input("\nEnter the message to sign: "))
     S = generate_signature(M, d, n)
