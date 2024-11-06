@@ -1,4 +1,3 @@
-
 def encrypt(text, shift):
     encrypted_text = "" 
     for char in text:  
