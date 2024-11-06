@@ -1,3 +1,6 @@
+#DIFFIE HELLMAN
+
+
 def diffie(q, alpha, XA, XB):
 
     YA = pow(alpha, XA, q)  # User A's public key
@@ -20,3 +23,5 @@ YA, YB, shared_key = diffie(q, alpha, XA, XB)
 print(f"User A's public key YA: {YA}")
 print(f"User B's public key YB: {YB}")
 print(f"Shared key: {shared_key}")
+
+
