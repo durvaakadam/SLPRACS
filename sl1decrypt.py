@@ -1,4 +1,3 @@
-
 def decrypt(text, shift):
     decrypted_text = ""
     for char in text:
