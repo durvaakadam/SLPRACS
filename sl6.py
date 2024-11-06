@@ -1,6 +1,3 @@
-#DIFFIE HELLMAN
-
-
 def diffie(q, alpha, XA, XB):
 
     YA = pow(alpha, XA, q)  # User A's public key
