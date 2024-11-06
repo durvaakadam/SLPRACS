@@ -9,7 +9,7 @@ def encrypt(text, shift):
                     shifted -= 26  
 
             elif char.isupper():  
-                if shifted > ord('Z'):  
+                if shifted > ord('Z'):
                     shifted -= 26 
             encrypted_text += chr(shifted)  
         else:
@@ -20,8 +20,8 @@ def main():
     plaintext = input("Enter the plaintext: ")
     shift = int(input("Enter the shift value (integer): "))  
 
-    encrypted = encrypt(plaintext, shift)  
-    print("Encrypted:", encrypted)
+    encrypted = encrypt(plaintext, shift) 
+    print("Encrypted:", encrypted) 
  
 if __name__ == "__main__":  
     main()  
