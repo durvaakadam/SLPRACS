@@ -31,3 +31,4 @@ if __name__ == "__main__":
     # Encryption
     encrypted = vigenere_encrypt(plaintext, keyword)
     print("Encrypted:", encrypted)
+    
