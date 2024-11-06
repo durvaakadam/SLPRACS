@@ -33,4 +33,4 @@ decrypted_message = decrypt(ciphertext, d, n)
 
 print(f"\nPublic Key (e, n): ({e}, {n})")
 print(f"Private Key d: {d}")
-print(f"Decrypted Message: {decrypted_message}")
+print(f"Decrypted Message is: {decrypted_message}")
